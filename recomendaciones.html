@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Recomendaciones | Eco-Resiliente FEN</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <style>
+
+        .recomendaciones-pagina {
+            padding: 75px 0;
+        }
+
+        .recomendaciones-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .recomendaciones-header span {
+            color: #3498ff;
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        .recomendaciones-header h1 {
+            font-size: clamp(32px, 5vw, 50px);
+            margin: 12px 0;
+        }
+
+        .recomendaciones-header p {
+            color: #68758a;
+            line-height: 1.7;
+        }
+
+        .recomendaciones-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .recomendacion-card {
+            background: white;
+            border: 1px solid #e3eaf4;
+            border-radius: 20px;
+            padding: 27px;
+            transition: 0.35s ease;
+        }
+
+        .recomendacion-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 40px rgba(35, 71, 115, 0.10);
+        }
+
+        .recomendacion-icono {
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            background: #eaf4ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .recomendacion-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .recomendacion-card p {
+            color: #6c788e;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .recomendaciones-cta {
+            max-width: 850px;
+            margin: 50px auto 0;
+            text-align: center;
+            background: #eaf4ff;
+            padding: 35px;
+            border-radius: 23px;
+        }
+
+        .recomendaciones-cta h2 {
+            margin-bottom: 10px;
+        }
+
+        .recomendaciones-cta p {
+            color: #68758a;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        body.modo-oscuro .recomendaciones-header p {
+            color: #b9c6d8;
+        }
+
+        body.modo-oscuro .recomendacion-card {
+            background: #182438;
+            border-color: #2b3c56;
+        }
+
+        body.modo-oscuro .recomendacion-card p {
+            color: #b4c1d3;
+        }
+
+        body.modo-oscuro .recomendaciones-cta {
+            background: #172d47;
+        }
+
+        body.modo-oscuro .recomendaciones-cta p {
+            color: #b9c6d8;
+        }
+
+        @media (max-width: 1000px) {
+
+            .recomendaciones-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 550px) {
+
+            .recomendaciones-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="contenedor header-contenido">
+
+            <a href="../index.html" class="logo">
+                🏠 Eco-Resiliente <span>FEN</span>
+            </a>
+
+            <button class="menu-btn" id="menuBtn">
+                ☰
+            </button>
+
+            <nav id="navMenu">
+
+                <a href="../index.html">
+                    Inicio
+                </a>
+
+                <a href="../index.html#fen">
+                    ¿Qué es el FEN?
+                </a>
+
+                <a href="../index.html#solucion">
+                    Nuestra solución
+                </a>
+
+                <a href="analisis.html">
+                    Analizar vivienda
+                </a>
+
+                <button id="temaBtn" class="tema-btn">
+                    🌙
+                </button>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= CONTENIDO ================= -->
+
+    <main>
+
+        <section class="recomendaciones-pagina">
+
+            <div class="contenedor">
+
+                <div class="recomendaciones-header">
+
+                    <span>
+                        🛡️ PREVENCIÓN
+                    </span>
+
+                    <h1>
+                        Recomendaciones frente al FEN
+                    </h1>
+
+                    <p>
+                        Conoce algunas medidas que pueden ayudarte
+                        a preparar tu vivienda y familia ante lluvias
+                        intensas e inundaciones.
+                    </p>
+
+                </div>
+
+
+                <div class="recomendaciones-grid">
+
+                    <article class="recomendacion-card">
+
+                        <div class="recomendacion-icono">
+                            🧹
+                        </div>
+
+                        <h3>
+                            Mantén limpios los desagües
+                        </h3>
+
+                        <p>
+                            Limpia periódicamente los desagües,
+                            canaletas y zonas por donde pueda circular
+                            el agua para evitar obstrucciones.
+                        </p>
+
+                    </article>
+
+
+                    <article class="recomendacion-card">
+
+                        <div class="recomendacion-icono">
+                            🏠
+                        </div>
+
+                        <h3>
+                            Revisa tu vivienda
+                        </h3>
+
+                        <p>
+                            Comprueba el estado del techo, paredes,
+                            puertas y otras partes de la vivienda
+                            antes de la temporada de lluvias.
+                        </p>
+
+                    </article>
+
+
+                    <article class="recomendacion-card">
+
+                        <div class="recomendacion-icono">
+                            🎒
+                        </div>
+
+                        <h3>
+                            Prepara una mochila
+                        </h3>
+
+                        <p>
+                            Ten preparada una mochila de emergencia
+                            con elementos necesarios para la familia.
+                        </p>
+
+                    </article>
+
+
+                    <article class="recomendacion-card">
+
+                        <div class="recomendacion-icono">
+                            📢
+                        </div>
+
+                        <h3>
+                            Mantente informado
+                        </h3>
+
+                        <p>
+                            Presta atención a los avisos y comunicados
+                            oficiales relacionados con lluvias,
+                            inundaciones y emergencias.
+                        </p>
+
+                    </article>
+
+
+                    <article class="recomendacion-card">
+
+                        <div class="recomendacion-icono">
+                            👨‍👩‍👧‍👦
+                        </div>
+
+                        <h3>
+                            Plan familiar
+                        </h3>
+
+                        <p>
+                            Conversa con tu familia y acuerden qué
+                            hacer y dónde reunirse ante una emergencia.
+                        </p>
+
+                    </article>
+
+
+                    <article class="recomendacion-card">
+
+                        <div class="recomendacion-icono">
+                            📄
+                        </div>
+
+                        <h3>
+                            Protege documentos
+                        </h3>
+
+                        <p>
+                            Guarda documentos importantes en un lugar
+                            protegido del agua y de fácil acceso.
+                        </p>
+
+                    </article>
+
+
+                    <article class="recomendacion-card">
+
+                        <div class="recomendacion-icono">
+                            🚪
+                        </div>
+
+                        <h3>
+                            Identifica una zona segura
+                        </h3>
+
+                        <p>
+                            Reconoce con anticipación los lugares
+                            seguros y las posibles rutas de evacuación.
+                        </p>
+
+                    </article>
+
+
+                    <article class="recomendacion-card">
+
+                        <div class="recomendacion-icono">
+                            💧
+                        </div>
+
+                        <h3>
+                            Cuida el agua
+                        </h3>
+
+                        <p>
+                            Protege los recipientes de agua y evita
+                            que entren en contacto con agua contaminada.
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <div class="recomendaciones-cta">
+
+                    <h2>
+                        🏠 ¿Quieres conocer el nivel de vulnerabilidad?
+                    </h2>
+
+                    <p>
+                        Realiza el análisis de tu vivienda y recibe
+                        recomendaciones según los factores evaluados.
+                    </p>
+
+                    <a
+                        href="analisis.html"
+                        class="btn btn-primary">
+                        🔎 Analizar mi vivienda
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="contenedor footer-content">
+
+            <div>
+
+                <strong>
+                    🏠 Eco-Resiliente FEN
+                </strong>
+
+                <p>
+                    Prevención y preparación frente al Fenómeno
+                    de El Niño.
+                </p>
+
+            </div>
+
+            <p>
+                © 2026 Eco-Resiliente FEN
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="../js/script.js"></script>
+
+</body>
+</html>

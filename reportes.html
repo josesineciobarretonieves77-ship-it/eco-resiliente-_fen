@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Reportes | Eco-Resiliente FEN</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <style>
+
+        .reportes-pagina {
+            padding: 75px 0;
+        }
+
+        .reportes-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 45px;
+        }
+
+        .reportes-header span {
+            color: #3498ff;
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        .reportes-header h1 {
+            font-size: clamp(32px, 5vw, 50px);
+            margin: 12px 0;
+        }
+
+        .reportes-header p {
+            color: #68758a;
+            line-height: 1.7;
+        }
+
+        .reporte-contenedor {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            border: 1px solid #e2eaf5;
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 20px 60px rgba(39, 74, 120, 0.10);
+        }
+
+        .campo-reporte {
+            margin-bottom: 22px;
+        }
+
+        .campo-reporte label {
+            display: block;
+            font-weight: 800;
+            margin-bottom: 9px;
+        }
+
+        .campo-reporte select,
+        .campo-reporte input,
+        .campo-reporte textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #dce5f2;
+            border-radius: 12px;
+            background: #f9fbff;
+            font-family: inherit;
+            font-size: 14px;
+            color: #172033;
+            outline: none;
+        }
+
+        .campo-reporte textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .campo-reporte select:focus,
+        .campo-reporte input:focus,
+        .campo-reporte textarea:focus {
+            border-color: #3498ff;
+        }
+
+        .btn-reporte {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            background: #3498ff;
+            color: white;
+            padding: 16px;
+            border-radius: 13px;
+            font-size: 15px;
+            font-weight: 800;
+            transition: 0.3s;
+        }
+
+        .btn-reporte:hover {
+            transform: translateY(-2px);
+            background: #2187e6;
+        }
+
+        #mensajeReporte {
+            display: none;
+            margin-top: 20px;
+            padding: 18px;
+            background: #eefaf2;
+            border: 1px solid #75c990;
+            border-radius: 14px;
+            color: #22633a;
+            line-height: 1.6;
+        }
+
+        .nota {
+            max-width: 750px;
+            margin: 20px auto 0;
+            text-align: center;
+            color: #78859a;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        body.modo-oscuro .reportes-header p {
+            color: #b9c6d8;
+        }
+
+        body.modo-oscuro .reporte-contenedor {
+            background: #182438;
+            border-color: #2b3c56;
+        }
+
+        body.modo-oscuro .campo-reporte select,
+        body.modo-oscuro .campo-reporte input,
+        body.modo-oscuro .campo-reporte textarea {
+            background: #111d2e;
+            border-color: #354761;
+            color: #edf4ff;
+        }
+
+        body.modo-oscuro .nota {
+            color: #b4c1d3;
+        }
+
+        body.modo-oscuro #mensajeReporte {
+            background: #173324;
+            color: #d8f0df;
+            border-color: #397b50;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="contenedor header-contenido">
+
+            <a href="../index.html" class="logo">
+                🏠 Eco-Resiliente <span>FEN</span>
+            </a>
+
+            <button class="menu-btn" id="menuBtn">
+                ☰
+            </button>
+
+            <nav id="navMenu">
+
+                <a href="../index.html">
+                    Inicio
+                </a>
+
+                <a href="../index.html#fen">
+                    ¿Qué es el FEN?
+                </a>
+
+                <a href="../index.html#solucion">
+                    Nuestra solución
+                </a>
+
+                <a href="analisis.html">
+                    Analizar vivienda
+                </a>
+
+                <button id="temaBtn" class="tema-btn">
+                    🌙
+                </button>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= CONTENIDO ================= -->
+
+    <main>
+
+        <section class="reportes-pagina">
+
+            <div class="contenedor">
+
+                <div class="reportes-header">
+
+                    <span>
+                        🚨 REPORTE
+                    </span>
+
+                    <h1>
+                        Registra un problema de tu zona
+                    </h1>
+
+                    <p>
+                        Puedes registrar información relacionada
+                        con inundaciones, drenaje, daños en viviendas
+                        o zonas de riesgo.
+                    </p>
+
+                </div>
+
+
+                <div class="reporte-contenedor">
+
+                    <form id="formReporte">
+
+                        <div class="campo-reporte">
+
+                            <label for="tipoProblema">
+                                🚨 Tipo de problema
+                            </label>
+
+                            <select
+                                id="tipoProblema"
+                                required>
+
+                                <option value="">
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="inundacion">
+                                    🌊 Inundación
+                                </option>
+
+                                <option value="drenaje">
+                                    🚰 Problema de drenaje
+                                </option>
+
+                                <option value="danio">
+                                    🏚️ Daño en vivienda
+                                </option>
+
+                                <option value="zona">
+                                    ⚠️ Zona de riesgo
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="campo-reporte">
+
+                            <label for="zonaReporte">
+                                📍 Zona donde ocurrió
+                            </label>
+
+                            <input
+                                type="text"
+                                id="zonaReporte"
+                                placeholder="Escribe la zona"
+                                required>
+
+                        </div>
+
+
+                        <div class="campo-reporte">
+
+                            <label for="descripcion">
+                                📝 Descripción
+                            </label>
+
+                            <textarea
+                                id="descripcion"
+                                placeholder="Describe lo ocurrido..."
+                                required></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn-reporte">
+                            🚨 Registrar reporte
+                        </button>
+
+                    </form>
+
+
+                    <div id="mensajeReporte">
+
+                        ✅ Reporte registrado correctamente.
+                        Gracias por contribuir con la prevención
+                        y seguridad de nuestra comunidad.
+
+                    </div>
+
+                </div>
+
+
+                <p class="nota">
+                    ℹ️ Esta función corresponde a una demostración
+                    del proyecto. Los reportes registrados no son
+                    enviados a una institución real.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="contenedor footer-content">
+
+            <div>
+
+                <strong>
+                    🏠 Eco-Resiliente FEN
+                </strong>
+
+                <p>
+                    Prevención y preparación frente al Fenómeno
+                    de El Niño.
+                </p>
+
+            </div>
+
+            <p>
+                © 2026 Eco-Resiliente FEN
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="../js/script.js"></script>
+    <script src="../js/reportes.js"></script>
+
+</body>
+</html>

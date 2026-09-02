@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Análisis de vivienda | Eco-Resiliente FEN</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <style>
+
+        .pagina {
+            padding: 70px 0;
+        }
+
+        .analisis-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 45px;
+        }
+
+        .analisis-header span {
+            color: #3498ff;
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        .analisis-header h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            margin: 12px 0;
+        }
+
+        .analisis-header p {
+            color: #68758a;
+            line-height: 1.7;
+        }
+
+        .formulario-contenedor {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 25px;
+            border: 1px solid #e2eaf5;
+            box-shadow: 0 20px 60px rgba(39, 74, 120, 0.10);
+        }
+
+        .campo {
+            margin-bottom: 22px;
+        }
+
+        .campo label {
+            display: block;
+            font-weight: 800;
+            margin-bottom: 9px;
+        }
+
+        .campo small {
+            display: block;
+            color: #758197;
+            margin-bottom: 9px;
+            line-height: 1.5;
+        }
+
+        .campo select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #dce5f2;
+            border-radius: 12px;
+            background: #f9fbff;
+            font-family: inherit;
+            font-size: 14px;
+            color: #172033;
+            outline: none;
+        }
+
+        .campo select:focus {
+            border-color: #3498ff;
+        }
+
+        .btn-analizar {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            background: #3498ff;
+            color: white;
+            padding: 16px;
+            border-radius: 13px;
+            font-size: 15px;
+            font-weight: 800;
+            transition: 0.3s;
+        }
+
+        .btn-analizar:hover {
+            transform: translateY(-2px);
+            background: #2187e6;
+        }
+
+        .resultado {
+            display: none;
+            max-width: 850px;
+            margin: 30px auto 0;
+            padding: 30px;
+            border-radius: 22px;
+        }
+
+        .resultado.visible {
+            display: block;
+            animation: aparecer 0.5s ease;
+        }
+
+        .resultado-bajo {
+            background: #eefaf2;
+            border: 2px solid #75c990;
+        }
+
+        .resultado-medio {
+            background: #fff9e8;
+            border: 2px solid #e6c45e;
+        }
+
+        .resultado-alto {
+            background: #fff0f0;
+            border: 2px solid #e27b7b;
+        }
+
+        .resultado-cabecera {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        #resultadoIcono {
+            font-size: 45px;
+        }
+
+        #nivelTextoVisual {
+            font-size: 23px;
+            font-weight: 900;
+        }
+
+        #mensaje {
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        #recomendacion {
+            line-height: 1.8;
+        }
+
+        #recomendacion ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .puntaje {
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        @keyframes aparecer {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        body.modo-oscuro .analisis-header p {
+            color: #b9c6d8;
+        }
+
+        body.modo-oscuro .formulario-contenedor {
+            background: #182438;
+            border-color: #2b3c56;
+        }
+
+        body.modo-oscuro .campo small {
+            color: #b4c1d3;
+        }
+
+        body.modo-oscuro .campo select {
+            background: #111d2e;
+            border-color: #354761;
+            color: #edf4ff;
+        }
+
+        body.modo-oscuro .resultado-bajo {
+            background: #173324;
+        }
+
+        body.modo-oscuro .resultado-medio {
+            background: #39321a;
+        }
+
+        body.modo-oscuro .resultado-alto {
+            background: #3b2020;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="contenedor header-contenido">
+
+            <a href="../index.html" class="logo">
+                🏠 Eco-Resiliente <span>FEN</span>
+            </a>
+
+            <button class="menu-btn" id="menuBtn">
+                ☰
+            </button>
+
+            <nav id="navMenu">
+
+                <a href="../index.html">
+                    Inicio
+                </a>
+
+                <a href="../index.html#fen">
+                    ¿Qué es el FEN?
+                </a>
+
+                <a href="../index.html#solucion">
+                    Nuestra solución
+                </a>
+
+                <a href="analisis.html">
+                    Analizar vivienda
+                </a>
+
+                <button id="temaBtn" class="tema-btn">
+                    🌙
+                </button>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= CONTENIDO ================= -->
+
+    <main>
+
+        <section class="pagina">
+
+            <div class="contenedor">
+
+                <div class="analisis-header">
+
+                    <span>
+                        🏠 EVALUACIÓN DE VIVIENDA
+                    </span>
+
+                    <h1>
+                        Analiza la vulnerabilidad de tu vivienda
+                    </h1>
+
+                    <p>
+                        Responde las siguientes preguntas para
+                        identificar posibles factores de vulnerabilidad
+                        frente al Fenómeno de El Niño.
+                    </p>
+
+                </div>
+
+
+                <div class="formulario-contenedor">
+
+                    <form id="formulario">
+
+                        <div class="campo">
+
+                            <label for="material">
+                                🧱 ¿Cuál es el material principal de tu vivienda?
+                            </label>
+
+                            <small>
+                                Selecciona el material que predomina en la vivienda.
+                            </small>
+
+                            <select id="material" required>
+
+                                <option value="">
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="1">
+                                    Material resistente
+                                </option>
+
+                                <option value="2">
+                                    Ladrillo o concreto
+                                </option>
+
+                                <option value="3">
+                                    Adobe
+                                </option>
+
+                                <option value="4">
+                                    Material vulnerable
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="pisos">
+                                🏢 ¿Cuántos pisos tiene tu vivienda?
+                            </label>
+
+                            <select id="pisos" required>
+
+                                <option value="">
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="1">
+                                    1 piso
+                                </option>
+
+                                <option value="2">
+                                    2 pisos
+                                </option>
+
+                                <option value="3">
+                                    3 o más pisos
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="techo">
+                                🏠 ¿Cómo se encuentra el techo?
+                            </label>
+
+                            <select id="techo" required>
+
+                                <option value="">
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="1">
+                                    Buen estado
+                                </option>
+
+                                <option value="2">
+                                    Estado regular
+                                </option>
+
+                                <option value="3">
+                                    Presenta algunos daños
+                                </option>
+
+                                <option value="4">
+                                    Muy deteriorado
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="zona">
+                                📍 ¿Cómo es la ubicación de tu vivienda?
+                            </label>
+
+                            <select id="zona" required>
+
+                                <option value="">
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="1">
+                                    Zona segura
+                                </option>
+
+                                <option value="2">
+                                    Zona con riesgo moderado
+                                </option>
+
+                                <option value="3">
+                                    Zona propensa a inundaciones
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="drenaje">
+                                🚰 ¿Cómo se encuentra el sistema de drenaje?
+                            </label>
+
+                            <select id="drenaje" required>
+
+                                <option value="">
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="1">
+                                    Funciona correctamente
+                                </option>
+
+                                <option value="2">
+                                    Presenta algunos problemas
+                                </option>
+
+                                <option value="3">
+                                    Está obstruido o es insuficiente
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="agua">
+                                💧 ¿Cómo se encuentra el acceso al agua?
+                            </label>
+
+                            <select id="agua" required>
+
+                                <option value="">
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="1">
+                                    Servicio normal
+                                </option>
+
+                                <option value="2">
+                                    Presenta interrupciones
+                                </option>
+
+                                <option value="3">
+                                    Presenta problemas frecuentes
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="inundacion">
+                                🌊 ¿La vivienda ha sido afectada por inundaciones?
+                            </label>
+
+                            <select id="inundacion" required>
+
+                                <option value="">
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="1">
+                                    No
+                                </option>
+
+                                <option value="2">
+                                    Algunas veces
+                                </option>
+
+                                <option value="3">
+                                    Sí, frecuentemente
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="proteccion">
+                                🛡️ ¿La vivienda cuenta con medidas de protección?
+                            </label>
+
+                            <select id="proteccion" required>
+
+                                <option value="">
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="1">
+                                    Cuenta con buenas medidas
+                                </option>
+
+                                <option value="2">
+                                    Cuenta con algunas medidas
+                                </option>
+
+                                <option value="3">
+                                    No cuenta con medidas
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn-analizar">
+                            🔎 Analizar vivienda
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- ================= RESULTADO ================= -->
+
+                <div id="resultado" class="resultado">
+
+                    <div class="resultado-cabecera">
+
+                        <div id="resultadoIcono">
+                            🏠
+                        </div>
+
+                        <div id="nivelTextoVisual">
+                            RESULTADO
+                        </div>
+
+                    </div>
+
+                    <p id="mensaje"></p>
+
+                    <div id="recomendacion"></div>
+
+                    <div class="puntaje">
+
+                        Puntaje obtenido:
+                        <span id="nivel">0</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="contenedor footer-content">
+
+            <div>
+
+                <strong>
+                    🏠 Eco-Resiliente FEN
+                </strong>
+
+                <p>
+                    Prevención y preparación frente al Fenómeno
+                    de El Niño.
+                </p>
+
+            </div>
+
+            <p>
+                © 2026 Eco-Resiliente FEN
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="../js/script.js"></script>
+    <script src="../js/analisis.js"></script>
+
+</body>
+</html>
